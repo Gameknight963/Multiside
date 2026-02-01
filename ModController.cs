@@ -31,7 +31,6 @@ namespace MSZmultiplayer
         {
             if (PhotonManager.client == null) LoggerInstance.Msg("client null");
             if (PhotonManager.client?.LocalPlayer == null) LoggerInstance.Msg("LocalPlayer null");
-            if (kiri == null) LoggerInstance.Msg("kiri null");
 
             if (PhotonManager.client == null || PhotonManager.client.LocalPlayer == null || kiri == null)
                 return;
