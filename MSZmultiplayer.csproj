@@ -112,6 +112,7 @@
     <Compile Include="ModController.cs" />
     <Compile Include="PhotonCallbacks.cs" />
     <Compile Include="PhotonManger.cs" />
+    <Compile Include="PlayerPositionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -67,6 +67,10 @@ namespace MSZmultiplayer
                     object data = photonEvent.CustomData;
                     ModController.CoolLogger.Msg($"Received event: {data}");
                     break;
+                case 2:
+                    PlayerPositionData posData = photonEvent.CustomData as PlayerPositionData;
+                    PhotonManager.UpdatePlayer(posData);
+                    break;
                 default:
                     ModController.CoolLogger.Msg($"Unknown event code: {photonEvent.Code}");
                     break;

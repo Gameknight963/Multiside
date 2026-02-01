@@ -7,15 +7,16 @@ using UnityEngine;
 
 namespace MSZmultiplayer
 {
+    [Serializable]
     public class PlayerPositionData
     {
-        public int playerId;
+        public int actorNumber;
         public Vector3 position;
         public Quaternion rotation;
 
         public PlayerPositionData(int id, Vector3 pos, Quaternion rot)
         {
-            playerId = id;
+            actorNumber = id;
             position = pos;
             rotation = rot;
         }

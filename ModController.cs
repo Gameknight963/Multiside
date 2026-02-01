@@ -7,6 +7,8 @@ namespace MSZmultiplayer
     {
         private GameObject kiri;
         public static MelonLogger.Instance CoolLogger;
+        private const float updateIntervalMs = 100;
+        private float sendTimer = 0;
 
         public override void OnInitializeMelon()
         {
@@ -24,6 +26,22 @@ namespace MSZmultiplayer
         public override void OnUpdate()
         {
             PhotonManager.Service();
+        }
+        public override void OnFixedUpdate()
+        {
+            sendTimer += Time.fixedUnscaledDeltaTime;
+            LoggerInstance.Msg(sendTimer);
+            if (sendTimer*1000 > updateIntervalMs)
+            {
+                sendTimer = 0;
+                PlayerPositionData myData = new PlayerPositionData
+                (
+                    PhotonManager.client.LocalPlayer.ActorNumber,
+                    kiri.transform.position,
+                    kiri.transform.rotation
+                );
+                PhotonManager.SendPlayerData(myData);
+            }
         }
     }
 }

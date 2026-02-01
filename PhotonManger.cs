@@ -23,6 +23,22 @@ namespace MSZmultiplayer
             client.AddCallbackTarget(callbacks);
         }
 
+        public static void SendPlayerData(PlayerPositionData data)
+        {
+            PhotonManager.client.OpRaiseEvent(
+            eventCode: 2,
+            customEventContent: data,
+            raiseEventArgs: new RaiseEventArgs { Receivers = ReceiverGroup.Others },
+            sendOptions: new SendOptions { Reliability = false });
+        }
+        public static void UpdatePlayer(PlayerPositionData posData)
+        {
+            if (playerObjects.TryGetValue(posData.actorNumber, out GameObject playerObj))
+            {
+                playerObj.transform.position = posData.position;
+                playerObj.transform.rotation = posData.rotation;
+            }
+        }
         public static void Service()
         {
             client?.Service();
