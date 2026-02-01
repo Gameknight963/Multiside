@@ -21,7 +21,7 @@ After installation, your game directory will contain:
 ``MelonLoader``  
 
 #### Install the mod
-Download the .dll from this repo, and put it in your mods folder.
+Download the .dll from this repo. Or you can use [this link](https://github.com/Gameknight963/Multiside/raw/refs/heads/main/MSZmultiplayer.dll) which links to the file for you. Put it in your mods folder. 
 
 That's it! Upon launching, you will automatically connect to the server.
 
