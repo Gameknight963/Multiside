@@ -39,7 +39,6 @@ namespace MSZmultiplayer
                 GameObject kiriInstance = HelperFunctions.CreateKiri();
                 PhotonManager.playerObjects[player.ActorNumber] = kiriInstance;
             }
-
         }
 
         public void OnJoinRandomFailed(short returnCode, string message)
@@ -82,7 +81,22 @@ namespace MSZmultiplayer
         }
 
         public void OnPlayerLeftRoom(Player otherPlayer)
-            => ModController.CoolLogger.Msg($"Player left room: {otherPlayer.NickName} ({otherPlayer.ActorNumber})");
+        {
+            ModController.CoolLogger.Msg($"Player left room: {otherPlayer.NickName} ({otherPlayer.ActorNumber})");
+            if (PhotonManager.playerObjects.TryGetValue(otherPlayer.ActorNumber, out GameObject obj))
+            {
+                GameObject.Destroy(obj);
+                PhotonManager.playerObjects.Remove(otherPlayer.ActorNumber);
+            }
+            else
+            {
+                ModController.CoolLogger.Msg($"Attempted to delete player {otherPlayer.ActorNumber}, but could not find dictionary instance");
+                foreach (var kvp in PhotonManager.playerObjects)
+                {
+                    ModController.CoolLogger.Msg($"Player {kvp.Key} -> GameObject: {(kvp.Value != null ? kvp.Value.name : "null")}");
+                }
+            }
+        }
 
         public void OnMasterClientSwitched(Player newMasterClient)
             => ModController.CoolLogger.Msg($"Master client switched: {newMasterClient.NickName} ({newMasterClient.ActorNumber})");

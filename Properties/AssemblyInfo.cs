@@ -16,7 +16,7 @@ using System.Runtime.InteropServices.ComTypes;
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: MelonInfo(typeof(ModController), "MMM", "0.5.0", "gameknight963")]
+[assembly: MelonInfo(typeof(ModController), "MMM", "0.5.1", "gameknight963")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
