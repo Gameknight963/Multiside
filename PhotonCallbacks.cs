@@ -13,7 +13,6 @@ namespace MSZmultiplayer
         public void OnConnectedToMaster()
         {
             ModController.CoolLogger.Msg("Connected to master server");
-            PhotonManager.client.OpJoinRandomRoom();
         }
 
         public void OnDisconnected(DisconnectCause cause)
@@ -28,6 +27,19 @@ namespace MSZmultiplayer
                 raiseEventArgs: new RaiseEventArgs { Receivers = ReceiverGroup.Others },
                 sendOptions: new SendOptions { Reliability = true }
             );
+            foreach (var kvp in PhotonManager.client.CurrentRoom.Players)
+            {
+                Player player = kvp.Value;
+
+                if (player.ActorNumber == PhotonManager.client.LocalPlayer.ActorNumber)
+                    continue;
+
+                ModController.CoolLogger.Msg($"Spawning existing player {player.NickName} ({player.ActorNumber})");
+
+                GameObject kiriInstance = HelperFunctions.CreateKiri();
+                PhotonManager.playerObjects[player.ActorNumber] = kiriInstance;
+            }
+
         }
 
         public void OnJoinRandomFailed(short returnCode, string message)

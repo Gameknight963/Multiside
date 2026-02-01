@@ -17,7 +17,8 @@ namespace MSZmultiplayer
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             if (sceneName != "Version 1.9 POST") return;
-            HelperFunctions.CreateKiri();
+            PhotonManager.client.OpJoinRandomRoom();
+            //HelperFunctions.CreateKiri();
         }
 
         public override void OnUpdate()
