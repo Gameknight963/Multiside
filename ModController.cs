@@ -8,7 +8,7 @@ namespace MSZmultiplayer
         private GameObject kiri;
         public static MelonLogger.Instance CoolLogger;
         private const float updateIntervalMs = 100;
-        private float sendTimer = 0;
+        private float sendTimer = updateIntervalMs  ;
 
         public override void OnInitializeMelon()
         {
@@ -19,6 +19,7 @@ namespace MSZmultiplayer
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             if (sceneName != "Version 1.9 POST") return;
+            kiri = GameObject.Find("Kiri");
             PhotonManager.client.OpJoinRandomRoom();
             //HelperFunctions.CreateKiri();
         }
@@ -29,8 +30,14 @@ namespace MSZmultiplayer
         }
         public override void OnFixedUpdate()
         {
+            if (PhotonManager.client == null) LoggerInstance.Msg("client null");
+            if (PhotonManager.client?.LocalPlayer == null) LoggerInstance.Msg("LocalPlayer null");
+            if (kiri == null) LoggerInstance.Msg("kiri null");
+
+            if (PhotonManager.client == null || PhotonManager.client.LocalPlayer == null || kiri == null)
+                return;
             sendTimer += Time.fixedUnscaledDeltaTime;
-            LoggerInstance.Msg(sendTimer);
+            LoggerInstance.Msg(sendTimer*1000);
             if (sendTimer*1000 > updateIntervalMs)
             {
                 sendTimer = 0;

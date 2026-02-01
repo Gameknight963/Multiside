@@ -25,9 +25,18 @@ namespace MSZmultiplayer
 
         public static void SendPlayerData(PlayerPositionData data)
         {
+            float[] posArray = new float[3] { data.position.x, data.position.y, data.position.z };
+            float[] rotArray = new float[4] { data.rotation.x, data.rotation.y, data.rotation.z, data.rotation.w };
+            PhotonHashtable ht = new PhotonHashtable
+            {
+
+                { "actor", data.actorNumber },
+                { "pos", posArray },
+                { "rot", rotArray }
+            };
             PhotonManager.client.OpRaiseEvent(
             eventCode: 2,
-            customEventContent: data,
+            customEventContent: ht,
             raiseEventArgs: new RaiseEventArgs { Receivers = ReceiverGroup.Others },
             sendOptions: new SendOptions { Reliability = false });
         }

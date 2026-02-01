@@ -2,6 +2,7 @@ using Photon.Realtime;
 using Photon.Client;
 using System.Collections.Generic;
 using UnityEngine;
+using ExitGames.Client.Photon;
 
 namespace MSZmultiplayer
 {
@@ -61,19 +62,26 @@ namespace MSZmultiplayer
 
         public void OnEvent(EventData photonEvent)
         {
+            object data = photonEvent.CustomData;
             switch (photonEvent.Code)
             {
                 case 1:
-                    object data = photonEvent.CustomData;
                     ModController.CoolLogger.Msg($"Received event: {data}");
                     break;
                 case 2:
-                    PlayerPositionData posData = photonEvent.CustomData as PlayerPositionData;
+                    PhotonHashtable ht = (PhotonHashtable)data;
+                    int actorNumber = (int)ht["actor"];
+                    float[] posArray = (float[])ht["pos"];
+                    float[] rotArray = (float[])ht["rot"];
+                    Vector3 pos = new Vector3(posArray[0], posArray[1], posArray[2]);
+                    Quaternion rot = new Quaternion(rotArray[0], rotArray[1], rotArray[2], rotArray[3]); 
+                    PlayerPositionData posData = new PlayerPositionData(actorNumber, pos, rot);
                     PhotonManager.UpdatePlayer(posData);
                     break;
                 default:
                     ModController.CoolLogger.Msg($"Unknown event code: {photonEvent.Code}");
                     break;
+                    
             }
         }
 
