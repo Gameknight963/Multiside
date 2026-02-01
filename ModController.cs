@@ -21,7 +21,6 @@ namespace MSZmultiplayer
             if (sceneName != "Version 1.9 POST") return;
             kiri = GameObject.Find("Kiri");
             PhotonManager.client.OpJoinRandomRoom();
-            //HelperFunctions.CreateKiri();
         }
 
         public override void OnUpdate()
@@ -37,7 +36,6 @@ namespace MSZmultiplayer
             if (PhotonManager.client == null || PhotonManager.client.LocalPlayer == null || kiri == null)
                 return;
             sendTimer += Time.fixedUnscaledDeltaTime;
-            LoggerInstance.Msg(sendTimer*1000);
             if (sendTimer*1000 > updateIntervalMs)
             {
                 sendTimer = 0;

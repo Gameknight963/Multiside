@@ -80,8 +80,7 @@ namespace MSZmultiplayer
                     break;
                 default:
                     ModController.CoolLogger.Msg($"Unknown event code: {photonEvent.Code}");
-                    break;
-                    
+                    break;   
             }
         }
 
@@ -102,7 +101,7 @@ namespace MSZmultiplayer
             }
             else
             {
-                ModController.CoolLogger.Msg($"Attempted to delete player {otherPlayer.ActorNumber}, but could not find dictionary instance");
+                ModController.CoolLogger.Error($"Attempted to delete player {otherPlayer.ActorNumber}, but could not find dictionary instance");
                 foreach (var kvp in PhotonManager.playerObjects)
                 {
                     ModController.CoolLogger.Msg($"Player {kvp.Key} -> GameObject: {(kvp.Value != null ? kvp.Value.name : "null")}");

@@ -24,7 +24,7 @@ namespace MSZmultiplayer
             }
             catch (NullReferenceException ex)
             {
-                ModController.CoolLogger.Error($"Exception while creating new player: {ex}");
+                ModController.CoolLogger.Error($"Null exception while creating new player: {ex}");
             }
             return kiri2;
         }
