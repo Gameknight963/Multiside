@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>MSZmultiplayer</AssemblyName>
+    <RootNamespace>MSZmultiplayer</RootNamespace>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony" HintPath="..\00_MSZ_DLLS\0Harmony.dll" />
+    <Reference Include="Assembly-CSharp" HintPath="..\00_MSZ_DLLS\Assembly-CSharp.dll" />
+    <Reference Include="Il2CppInterop.Common" HintPath="..\00_MSZ_DLLS\Il2CppInterop.Common.dll" />
+    <Reference Include="Il2CppInterop.HarmonySupport" HintPath="..\00_MSZ_DLLS\Il2CppInterop.HarmonySupport.dll" />
+    <Reference Include="Il2CppInterop.Runtime" HintPath="..\00_MSZ_DLLS\Il2CppInterop.Runtime.dll" />
+    <Reference Include="Il2Cppmscorlib" HintPath="..\00_MSZ_DLLS\Il2Cppmscorlib.dll" />
+    <Reference Include="MelonLoader" HintPath="..\00_MSZ_DLLS\MelonLoader.dll" />
+    <Reference Include="Newtonsoft.Json" HintPath="..\00_MSZ_DLLS\Newtonsoft.Json.dll" />
+    <Reference Include="PhotonChat" HintPath="..\00_MSZ_DLLS\Nonstandard\PhotonChat.dll" />
+    <Reference Include="PhotonClient" HintPath="..\00_MSZ_DLLS\Nonstandard\PhotonClient.dll" />
+    <Reference Include="PhotonRealtime" HintPath="..\00_MSZ_DLLS\Nonstandard\PhotonRealtime.dll" />
+    <Reference Include="Unity.TextMeshPro" HintPath="..\00_MSZ_DLLS\Unity.TextMeshPro.dll" />
+    <Reference Include="UnityEngine" HintPath="..\00_MSZ_DLLS\UnityEngine.dll" />
+    <Reference Include="UnityEngine.AssetBundleModule" HintPath="..\00_MSZ_DLLS\UnityEngine.AssetBundleModule.dll" />
+    <Reference Include="UnityEngine.AudioModule" HintPath="..\00_MSZ_DLLS\UnityEngine.AudioModule.dll" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="..\00_MSZ_DLLS\UnityEngine.CoreModule.dll" />
+    <Reference Include="UnityEngine.ImageConversionModule" HintPath="..\00_MSZ_DLLS\UnityEngine.ImageConversionModule.dll" />
+    <Reference Include="UnityEngine.IMGUIModule" HintPath="..\00_MSZ_DLLS\UnityEngine.IMGUIModule.dll" />
+    <Reference Include="UnityEngine.InputLegacyModule" HintPath="..\00_MSZ_DLLS\UnityEngine.InputLegacyModule.dll" />
+    <Reference Include="UnityEngine.PhysicsModule" HintPath="..\00_MSZ_DLLS\UnityEngine.PhysicsModule.dll" />
+    <Reference Include="UnityEngine.UI" HintPath="..\00_MSZ_DLLS\UnityEngine.UI.dll" />
+    <Reference Include="UnityEngine.UIModule" HintPath="..\00_MSZ_DLLS\UnityEngine.UIModule.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Multiside.shared\Multiside.shared.csproj" />
+  </ItemGroup>
+</Project>

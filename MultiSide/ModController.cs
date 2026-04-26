@@ -1,14 +1,15 @@
 ﻿using MelonLoader;
 using UnityEngine;
 
-namespace MSZmultiplayer
+namespace MultiSide
 {
     public class ModController : MelonMod
     {
         private GameObject kiri;
         public static MelonLogger.Instance CoolLogger;
-        private const float updateIntervalMs = 100;
-        private float sendTimer = updateIntervalMs  ;
+        private const float _updateInterval = 0.1f;
+        // set the send timer to updateinterval so it sends right away
+        private float _sendTimer = _updateInterval;
 
         public override void OnInitializeMelon()
         {
@@ -34,10 +35,10 @@ namespace MSZmultiplayer
 
             if (PhotonManager.client == null || PhotonManager.client.LocalPlayer == null || kiri == null)
                 return;
-            sendTimer += Time.fixedUnscaledDeltaTime;
-            if (sendTimer*1000 > updateIntervalMs)
+            _sendTimer += Time.fixedUnscaledDeltaTime;
+            if (_sendTimer > _updateInterval)
             {
-                sendTimer = 0;
+                _sendTimer = 0;
                 PlayerPositionData myData = new PlayerPositionData
                 (
                     PhotonManager.client.LocalPlayer.ActorNumber,

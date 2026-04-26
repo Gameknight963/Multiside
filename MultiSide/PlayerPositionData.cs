@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace MSZmultiplayer
+namespace MultiSide
 {
     [Serializable]
     public class PlayerPositionData

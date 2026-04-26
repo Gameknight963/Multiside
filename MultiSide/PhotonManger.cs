@@ -3,7 +3,7 @@ using Photon.Client;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MSZmultiplayer
+namespace MultiSide
 {
     public static class PhotonManager
     {

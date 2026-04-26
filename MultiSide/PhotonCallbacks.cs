@@ -2,9 +2,8 @@ using Photon.Realtime;
 using Photon.Client;
 using System.Collections.Generic;
 using UnityEngine;
-using ExitGames.Client.Photon;
 
-namespace MSZmultiplayer
+namespace MultiSide
 {
     public class PhotonCallbacks : IConnectionCallbacks, IMatchmakingCallbacks, IOnEventCallback, IInRoomCallbacks
     {
@@ -22,13 +21,7 @@ namespace MSZmultiplayer
         public void OnJoinedRoom()
         {
             ModController.CoolLogger.Msg("Joined room successfully");
-            PhotonManager.client.OpRaiseEvent(
-                eventCode: 1,
-                customEventContent: "Hello World",
-                raiseEventArgs: new RaiseEventArgs { Receivers = ReceiverGroup.Others },
-                sendOptions: new SendOptions { Reliability = true }
-            );
-            foreach (var kvp in PhotonManager.client.CurrentRoom.Players)
+            foreach (KeyValuePair<int, Player> kvp in PhotonManager.client.CurrentRoom.Players)
             {
                 Player player = kvp.Value;
 

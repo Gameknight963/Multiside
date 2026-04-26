@@ -1,7 +1,7 @@
 using Photon.Client;
 using Photon.Realtime;
 
-namespace MSZmultiplayer
+namespace MultiSide
 {
     public static class Config
     {

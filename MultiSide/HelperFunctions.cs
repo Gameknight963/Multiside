@@ -3,14 +3,15 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MSZmultiplayer
+namespace MultiSide
 {
     public static class HelperFunctions
     {
         public static GameObject CreateKiri()
         {
-            ModController.CoolLogger.Msg("adding n2324ew playr");
-            if (SceneManager.GetActiveScene().name != "Version 1.9 POST") return null;
+            ModController.CoolLogger.Msg("adding new player");
+            if (SceneManager.GetActiveScene().name != "Version 1.9 POST")
+                throw new InvalidOperationException("Problem detected, dont call it in this scene");
 
             GameObject kiri = GameObject.Find("Kiri");
             GameObject kiri2 = GameObject.Instantiate(kiri);
