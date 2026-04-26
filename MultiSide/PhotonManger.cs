@@ -35,7 +35,7 @@ namespace MultiSide
                 { "rot", rotArray }
             };
             PhotonManager.client.OpRaiseEvent(
-            eventCode: 2,
+            eventCode: 0,
             customEventContent: ht,
             raiseEventArgs: new RaiseEventArgs { Receivers = ReceiverGroup.Others },
             sendOptions: new SendOptions { Reliability = false });

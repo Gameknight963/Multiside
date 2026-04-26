@@ -42,7 +42,7 @@ namespace MultiSide
 
             RoomOptions roomOptions = new RoomOptions
             {
-                MaxPlayers = 8,
+                MaxPlayers = 20,
                 IsVisible = true
             };
             EnterRoomArgs enterParams = new EnterRoomArgs
@@ -58,10 +58,7 @@ namespace MultiSide
             object data = photonEvent.CustomData;
             switch (photonEvent.Code)
             {
-                case 1:
-                    ModController.CoolLogger.Msg($"Received event: {data}");
-                    break;
-                case 2:
+                case 0:
                     PhotonHashtable ht = (PhotonHashtable)data;
                     int actorNumber = (int)ht["actor"];
                     float[] posArray = (float[])ht["pos"];
