@@ -19,7 +19,7 @@ namespace MultiSide
             GameObject cameraObject = kiri2.transform.Find("Zero/PLAYER Armature/Rig Root/Hips/Spine/Chest/Neck2/Neck1/Head/CameraHoldHead/playerCamera").gameObject;
             try
             {
-                cameraObject.SetActive(false);
+                cameraObject.GetComponent<Camera>().enabled = false;
 
                 kiri2.GetComponent<kiriMoveBasic>()?.enabled = false;
 
