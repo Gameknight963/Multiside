@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>MSZmultiplayer</AssemblyName>
+    <AssemblyName>Multiside</AssemblyName>
     <RootNamespace>MultiSide</RootNamespace>
 	<ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

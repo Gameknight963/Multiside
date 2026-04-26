@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 using MultiSide;
 using UnityEngine;
-[assembly: MelonInfo(typeof(ModController), "Multiside", "0.6.0", "gameknight963")]
+[assembly: MelonInfo(typeof(ModController), "Multiside", "1.0.0", "gameknight963")]
 
 namespace MultiSide
 {
@@ -29,6 +29,7 @@ namespace MultiSide
         public override void OnUpdate()
         {
             PhotonManager.Instance.Service();
+            PhotonManager.Instance.UpdatePlayerTransforms();
         }
         public override void OnFixedUpdate()
         {

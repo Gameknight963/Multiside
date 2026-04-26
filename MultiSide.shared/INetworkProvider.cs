@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MultiSide.shared
+﻿namespace MultiSide.shared
 {
     public interface INetworkProvider
     {

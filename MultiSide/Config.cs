@@ -9,7 +9,7 @@ namespace MultiSide
         public readonly static AppSettings settings = new AppSettings
         {
             AppIdRealtime = "301df3f0-b282-4a33-b588-60e22cdf7d87",
-            AppVersion = "0.6.0",
+            AppVersion = "0.1.0",
             FixedRegion = "us",
             Protocol = ConnectionProtocol.Udp,
             NetworkLogging = LogLevel.Info

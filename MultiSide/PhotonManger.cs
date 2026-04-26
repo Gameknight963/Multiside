@@ -21,6 +21,9 @@ namespace MultiSide
         public event Action<int>? OnPlayerJoined;
         public event Action<int>? OnPlayerLeft;
 
+        public Dictionary<int, Vector3> _targetPositions = new();
+        public Dictionary<int, Quaternion> _targetRotations = new();
+
         public void Init()
         {
             ModController.CoolLogger.Msg("Initializing!");
@@ -64,8 +67,21 @@ namespace MultiSide
         {
             if (playerObjects.TryGetValue(posData.actorNumber, out GameObject? playerObj))
             {
-                playerObj.transform.position = posData.position;
-                playerObj.transform.rotation = posData.rotation;
+                _targetPositions[posData.actorNumber] = posData.position;
+                _targetRotations[posData.actorNumber] = posData.rotation;
+            }
+        }
+
+        public void UpdatePlayerTransforms()
+        {
+            foreach (KeyValuePair<int, GameObject> kvp in playerObjects)
+            {
+                int actor = kvp.Key;
+                GameObject obj = kvp.Value;
+                if (_targetPositions.TryGetValue(actor, out Vector3 targetPos))
+                    obj.transform.position = Vector3.Lerp(obj.transform.position, targetPos, Time.unscaledDeltaTime * 10f);
+                if (_targetRotations.TryGetValue(actor, out Quaternion targetRot))
+                    obj.transform.rotation = Quaternion.Lerp(obj.transform.rotation, targetRot, Time.unscaledDeltaTime * 10f);
             }
         }
 
