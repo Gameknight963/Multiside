@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Multiside</AssemblyName>
-    <RootNamespace>MultiSide</RootNamespace>
+    <RootNamespace>Multiside</RootNamespace>
 	<ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
