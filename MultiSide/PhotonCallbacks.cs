@@ -1,6 +1,5 @@
 using Photon.Realtime;
 using Photon.Client;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MultiSide
@@ -21,17 +20,17 @@ namespace MultiSide
         public void OnJoinedRoom()
         {
             ModController.CoolLogger.Msg("Joined room successfully");
-            foreach (KeyValuePair<int, Player> kvp in PhotonManager.client.CurrentRoom.Players)
+            foreach (KeyValuePair<int, Player> kvp in PhotonManager.Instance.client.CurrentRoom.Players)
             {
                 Player player = kvp.Value;
 
-                if (player.ActorNumber == PhotonManager.client.LocalPlayer.ActorNumber)
+                if (player.ActorNumber == PhotonManager.Instance.client.LocalPlayer.ActorNumber)
                     continue;
 
                 ModController.CoolLogger.Msg($"Spawning existing player {player.NickName} ({player.ActorNumber})");
 
                 GameObject kiriInstance = HelperFunctions.CreateKiri();
-                PhotonManager.playerObjects[player.ActorNumber] = kiriInstance;
+                PhotonManager.Instance.playerObjects[player.ActorNumber] = kiriInstance;
             }
         }
 
@@ -50,7 +49,7 @@ namespace MultiSide
                 RoomName = Config.DefaultRoom,
                 RoomOptions = roomOptions
             };
-            PhotonManager.client.OpCreateRoom(enterParams);
+            PhotonManager.Instance.client.OpCreateRoom(enterParams);
         }
 
         public void OnEvent(EventData photonEvent)
@@ -66,7 +65,13 @@ namespace MultiSide
                     Vector3 pos = new Vector3(posArray[0], posArray[1], posArray[2]);
                     Quaternion rot = new Quaternion(rotArray[0], rotArray[1], rotArray[2], rotArray[3]); 
                     PlayerPositionData posData = new PlayerPositionData(actorNumber, pos, rot);
-                    PhotonManager.UpdatePlayer(posData);
+                    PhotonManager.Instance.UpdatePlayer(posData);
+                    break;
+                case 99:
+                    PhotonHashtable ht99 = (PhotonHashtable)data;
+                    string channel = (string)ht99["channel"];
+                    object payload = ht99["data"];
+                    PhotonManager.Instance.RouteReceived(photonEvent.Sender, channel, payload);
                     break;
                 default:
                     ModController.CoolLogger.Msg($"Unknown event code: {photonEvent.Code}");
@@ -78,24 +83,18 @@ namespace MultiSide
         {
             ModController.CoolLogger.Msg($"Player entered room: {newPlayer.NickName} ({newPlayer.ActorNumber})");
             GameObject kiriInstance = HelperFunctions.CreateKiri();
-            PhotonManager.playerObjects[newPlayer.ActorNumber] = kiriInstance;
+            PhotonManager.Instance.playerObjects[newPlayer.ActorNumber] = kiriInstance;
+            PhotonManager.Instance.FirePlayerJoined(newPlayer.ActorNumber);
         }
 
         public void OnPlayerLeftRoom(Player otherPlayer)
         {
             ModController.CoolLogger.Msg($"Player left room: {otherPlayer.NickName} ({otherPlayer.ActorNumber})");
-            if (PhotonManager.playerObjects.TryGetValue(otherPlayer.ActorNumber, out GameObject obj))
+            if (PhotonManager.Instance.playerObjects.TryGetValue(otherPlayer.ActorNumber, out GameObject? obj))
             {
                 GameObject.Destroy(obj);
-                PhotonManager.playerObjects.Remove(otherPlayer.ActorNumber);
-            }
-            else
-            {
-                ModController.CoolLogger.Error($"Attempted to delete player {otherPlayer.ActorNumber}, but could not find dictionary instance");
-                foreach (var kvp in PhotonManager.playerObjects)
-                {
-                    ModController.CoolLogger.Msg($"Player {kvp.Key} -> GameObject: {(kvp.Value != null ? kvp.Value.name : "null")}");
-                }
+                PhotonManager.Instance.playerObjects.Remove(otherPlayer.ActorNumber);
+                PhotonManager.Instance.FirePlayerLeft(otherPlayer.ActorNumber);
             }
         }
 

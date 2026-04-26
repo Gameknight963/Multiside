@@ -1,5 +1,4 @@
 using Il2Cpp;
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,12 +19,21 @@ namespace MultiSide
             try
             {
                 cameraObject.SetActive(false);
-                kiri2.GetComponent<kiriMoveBasic>().enabled = false;
-                kiri2.transform.Find("PsuedoHead").gameObject.GetComponent<kiriLook>().enabled = false;
+
+                kiri2.GetComponent<kiriMoveBasic>()?.enabled = false;
+
+                //disable bhopmovment
+                MonoBehaviour? bhopMovement = kiri2.GetComponents<MonoBehaviour>()
+                    .FirstOrDefault(mb => mb.GetType().Name == "BhopMovement");
+                bhopMovement?.enabled = false;
+
+                kiri2.transform.Find("PsuedoHead").gameObject.GetComponent<kiriLook>()?.enabled = false;
+
+                kiri2.GetComponent<Rigidbody>()?.isKinematic = true;
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                ModController.CoolLogger.Error($"Null exception while creating new player: {ex}");
+                ModController.CoolLogger.Error($"Null exception while creating new player. One of the components disabled may not exist");
             }
             return kiri2;
         }
