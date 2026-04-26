@@ -3,7 +3,6 @@ A Melonloader mod to allow chaotic multiplayer gameplay in Miside Zero. Powered 
 
 **NOT compatabile with Miside!**
 
-
 ## Installation
 
 #### Install MelonLoader
@@ -28,8 +27,9 @@ Follow the instructions there.
 
 Upon launching, you will automatically connect to the server.
 
-## Warning!  
-This mod is in a very early state! Expect bugs, desync of multiple forms, etc.
+## For mod developers
+
+Documentation can be found at [DOCUMENTATION.md](https://github.com/Gameknight963/Multiside/blob/main/DOCUMENTATION.md)
 
 ## Planned Features
 - ❌ UI  
