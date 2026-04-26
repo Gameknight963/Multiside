@@ -1,14 +1,14 @@
 ﻿using MelonLoader;
 using MultiSide;
 using UnityEngine;
-[assembly: MelonInfo(typeof(ModController), "Multiside", "1.0.0", "gameknight963")]
+[assembly: MelonInfo(typeof(ModController), "Multiside", "1.0.1", "gameknight963")]
 
 namespace MultiSide
 {
     public class ModController : MelonMod
     {
-        private GameObject? kiri;
-        public static MelonLogger.Instance CoolLogger = null!;
+        public static GameObject? Kiri { get; private set; }
+        public static MelonLogger.Instance CoolLogger { get; private set; } = null!;
         private const float _updateInterval = 0.1f;
         // set the send timer to updateinterval so it sends right away
         private float _sendTimer = _updateInterval;
@@ -22,7 +22,7 @@ namespace MultiSide
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
         {
             if (sceneName != "Version 1.9 POST") return;
-            kiri = GameObject.Find("Kiri");
+            Kiri = GameObject.Find("Kiri");
             PhotonManager.Instance.client.OpJoinRandomRoom();
         }
 
@@ -36,7 +36,7 @@ namespace MultiSide
             if (PhotonManager.Instance.client == null) LoggerInstance.Msg("client null");
             if (PhotonManager.Instance.client?.LocalPlayer == null) LoggerInstance.Msg("LocalPlayer null");
 
-            if (PhotonManager.Instance.client == null || PhotonManager.Instance.client.LocalPlayer == null || kiri == null)
+            if (PhotonManager.Instance.client == null || PhotonManager.Instance.client.LocalPlayer == null || Kiri == null)
                 return;
             _sendTimer += Time.fixedUnscaledDeltaTime;
             if (_sendTimer > _updateInterval)
@@ -45,8 +45,8 @@ namespace MultiSide
                 PlayerPositionData myData = new PlayerPositionData
                 (
                     PhotonManager.Instance.client.LocalPlayer.ActorNumber,
-                    kiri.transform.position,
-                    kiri.transform.rotation
+                    Kiri.transform.position,
+                    Kiri.transform.rotation
                 );
                 PhotonManager.Instance.SendPlayerData(myData);
             }

@@ -31,6 +31,17 @@ namespace MultiSide
             NetworkRegistry.Register(this);
         }
 
+        public IReadOnlyDictionary<int, GameObject> PlayerObjects => playerObjects;
+
+        public GameObject? GetPlayerObject(int actor)
+            => playerObjects.TryGetValue(actor, out GameObject? obj) ? obj : null;
+
+        public int LocalActorNumber => client.LocalPlayer.ActorNumber;
+        public GameObject? LocalPlayerObject => ModController.Kiri;
+
+        public bool IsInRoom => client?.InRoom ?? false;
+        public event Action? OnRoomJoined;
+
         public void SendPlayerData(PlayerPositionData data)
         {
             float[] posArray = new float[3] { data.position.x, data.position.y, data.position.z };
