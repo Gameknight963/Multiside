@@ -35,6 +35,7 @@ namespace MultiSide
             ModListChecker.Init();
             NetworkRegistry.Provider?.Send(ModListChecker.Channel, HelperFunctions.GetModList());
             ModController.CoolLogger.Msg("Joined room successfully");
+            PhotonManager.Instance.FireRoomJoined();
         }
 
         public void OnJoinRandomFailed(short returnCode, string message)

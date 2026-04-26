@@ -23,6 +23,8 @@ namespace MultiSide
         public Dictionary<int, Vector3> _targetPositions = new();
         public Dictionary<int, Quaternion> _targetRotations = new();
 
+        public void FireRoomJoined() => OnRoomJoined?.Invoke();
+
         public void Init()
         {
             ModController.CoolLogger.Msg("Initializing!");
