@@ -1,5 +1,6 @@
-using Photon.Realtime;
+using MultiSide.shared;
 using Photon.Client;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace MultiSide
@@ -19,7 +20,6 @@ namespace MultiSide
 
         public void OnJoinedRoom()
         {
-            ModController.CoolLogger.Msg("Joined room successfully");
             foreach (KeyValuePair<int, Player> kvp in PhotonManager.Instance.client.CurrentRoom.Players)
             {
                 Player player = kvp.Value;
@@ -32,6 +32,9 @@ namespace MultiSide
                 GameObject kiriInstance = HelperFunctions.CreateKiri();
                 PhotonManager.Instance.playerObjects[player.ActorNumber] = kiriInstance;
             }
+            ModListChecker.Init();
+            NetworkRegistry.Provider?.Send(ModListChecker.Channel, HelperFunctions.GetModList());
+            ModController.CoolLogger.Msg("Joined room successfully");
         }
 
         public void OnJoinRandomFailed(short returnCode, string message)

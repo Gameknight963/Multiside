@@ -1,7 +1,6 @@
 using MultiSide.shared;
 using Photon.Client;
 using Photon.Realtime;
-using ExitGames.Client.Photon;
 using UnityEngine;
 
 namespace MultiSide
@@ -52,14 +51,28 @@ namespace MultiSide
         public void Send(string channel, object data, bool reliable = true)
         {
             PhotonHashtable ht = new PhotonHashtable
-        {
-            { "channel", channel },
-            { "data", data }
-        };
+            {
+                { "channel", channel },
+                { "data", data }
+            };
             client.OpRaiseEvent(
                 eventCode: 99,
                 customEventContent: ht,
                 raiseEventArgs: new RaiseEventArgs { Receivers = ReceiverGroup.Others },
+                sendOptions: new SendOptions { Reliability = reliable });
+        }
+
+        public void SendTo(int actor, string channel, object data, bool reliable = true)
+        {
+            PhotonHashtable ht = new PhotonHashtable
+            {
+                { "channel", channel },
+                { "data", data }
+            };
+            client.OpRaiseEvent(
+                eventCode: 99,
+                customEventContent: ht,
+                raiseEventArgs: new RaiseEventArgs { TargetActors = new int[] { actor } },
                 sendOptions: new SendOptions { Reliability = reliable });
         }
 

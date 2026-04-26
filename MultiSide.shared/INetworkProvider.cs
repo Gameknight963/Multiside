@@ -6,6 +6,7 @@
         IReadOnlyList<int> ConnectedActors { get; }
 
         void Send(string channel, object data, bool reliable = true);
+        void SendTo(int actor, string channel, object data, bool reliable = true);
         event Action<int, string, object> OnReceived;
 
         event Action<int> OnPlayerJoined;

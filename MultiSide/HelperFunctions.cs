@@ -1,4 +1,5 @@
 using Il2Cpp;
+using MelonLoader;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -37,5 +38,8 @@ namespace MultiSide
             }
             return kiri2;
         }
+
+        public static string[] GetModList() =>
+            MelonMod.RegisteredMelons.Select(m => m.Info.Name).ToArray();
     }
 }
