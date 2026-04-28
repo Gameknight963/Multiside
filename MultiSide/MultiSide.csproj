@@ -14,37 +14,40 @@
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\dependencies\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppInterop.Common">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\Il2CppInterop.Common.dll</HintPath>
+      <HintPath>..\dependencies\Il2CppInterop.Common.dll</HintPath>
     </Reference>
     <Reference Include="Il2CppInterop.Runtime">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\Il2CppInterop.Runtime.dll</HintPath>
+      <HintPath>..\dependencies\Il2CppInterop.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>..\dependencies\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\MelonLoader.dll</HintPath>
+      <HintPath>..\dependencies\MelonLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dependencies\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PhotonChat">
-      <HintPath>..\..\00_MSZ_DLLS\Other\PhotonChat.dll</HintPath>
+      <HintPath>..\dependencies\PhotonChat.dll</HintPath>
     </Reference>
     <Reference Include="PhotonClient">
-      <HintPath>..\..\00_MSZ_DLLS\Other\PhotonClient.dll</HintPath>
+      <HintPath>..\dependencies\PhotonClient.dll</HintPath>
     </Reference>
     <Reference Include="PhotonRealtime">
-      <HintPath>..\..\00_MSZ_DLLS\Other\PhotonRealtime.dll</HintPath>
+      <HintPath>..\dependencies\PhotonRealtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\UnityEngine.dll</HintPath>
+      <HintPath>..\dependencies\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\dependencies\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\dependencies\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

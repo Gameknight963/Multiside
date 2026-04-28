@@ -7,10 +7,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\UnityEngine.dll</HintPath>
+      <HintPath>..\dependencies\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\00_MSZ_DLLS\0.72\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\dependencies\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
