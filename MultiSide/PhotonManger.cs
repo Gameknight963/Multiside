@@ -24,6 +24,7 @@ namespace MultiSide
         public Dictionary<int, Quaternion> _targetRotations = new();
 
         public bool IsMasterClient => client.LocalPlayer.IsMasterClient;
+        public int MasterClientActorNumber => client.CurrentRoom.MasterClientId;
 
         public void FireRoomJoined() => OnRoomJoined?.Invoke();
 

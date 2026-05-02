@@ -25,5 +25,6 @@ namespace MultiSide.shared
         event Action OnRoomJoined;
 
         bool IsMasterClient { get; }
+        int MasterClientActorNumber { get; }
     }
 }
