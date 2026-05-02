@@ -23,5 +23,7 @@ namespace MultiSide.shared
 
         bool IsInRoom { get; }
         event Action OnRoomJoined;
+
+        bool IsMasterClient { get; }
     }
 }

@@ -23,6 +23,8 @@ namespace MultiSide
         public Dictionary<int, Vector3> _targetPositions = new();
         public Dictionary<int, Quaternion> _targetRotations = new();
 
+        public bool IsMasterClient => client.LocalPlayer.IsMasterClient;
+
         public void FireRoomJoined() => OnRoomJoined?.Invoke();
 
         public void Init()
