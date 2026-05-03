@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 using MultiSide;
 using UnityEngine;
-[assembly: MelonInfo(typeof(ModController), "Multiside", "1.0.1", "gameknight963")]
+[assembly: MelonInfo(typeof(ModController), "Multiside", "1.0.2", "gameknight963")]
 
 namespace MultiSide
 {
