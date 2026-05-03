@@ -33,6 +33,30 @@ namespace MultiSide
             ModController.CoolLogger.Msg("Initializing!");
             client.ConnectUsingSettings(Config.settings);
             client.AddCallbackTarget(callbacks);
+
+            PhotonPeer.RegisterType(
+                typeof(Vector3),
+                (byte)'V',
+                (outStream, obj) => {
+                    Vector3 v = (Vector3)obj;
+                    byte[] bytes = new byte[12];
+                    Buffer.BlockCopy(BitConverter.GetBytes(v.x), 0, bytes, 0, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(v.y), 0, bytes, 4, 4);
+                    Buffer.BlockCopy(BitConverter.GetBytes(v.z), 0, bytes, 8, 4);
+                    outStream.Write(bytes, 0, 12);
+                    return 12;
+                },
+                (inStream, length) => {
+                    byte[] bytes = new byte[12];
+                    inStream.Read(bytes, 0, 12);
+                    return new Vector3(
+                        BitConverter.ToSingle(bytes, 0),
+                        BitConverter.ToSingle(bytes, 4),
+                        BitConverter.ToSingle(bytes, 8)
+                    );
+                }
+            );
+
             NetworkRegistry.Register(this);
         }
 
