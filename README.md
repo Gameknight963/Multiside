@@ -1,6 +1,9 @@
 # Multiside
 A Melonloader mod to allow chaotic multiplayer gameplay in Miside Zero. Powered by Photon.
 
+![Downloads](https://img.shields.io/github/downloads/Gameknight963/Multiside/total)
+![Latest Release](https://img.shields.io/github/v/release/Gameknight963/Multiside)
+
 **NOT compatabile with Miside!**
 
 ## Installation
