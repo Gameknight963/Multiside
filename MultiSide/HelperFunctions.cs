@@ -1,4 +1,3 @@
-using Il2Cpp;
 using MelonLoader;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,9 +8,9 @@ namespace MultiSide
     {
         public static GameObject CreateKiri()
         {
-            ModController.CoolLogger.Msg("adding new player");
+            Core.CoolLogger.Msg("adding new player");
             if (SceneManager.GetActiveScene().name != "Version 1.9 POST")
-                throw new InvalidOperationException("Problem detected, dont call it in this scene");
+                throw new InvalidOperationException("Cannot call CreateKiri() on a scene that is not 'Version 1.9 POST'");
 
             GameObject kiri = GameObject.Find("Kiri");
             GameObject kiri2 = GameObject.Instantiate(kiri);
@@ -34,7 +33,7 @@ namespace MultiSide
             }
             catch (NullReferenceException)
             {
-                ModController.CoolLogger.Error($"Null exception while creating new player. One of the components disabled may not exist");
+                Core.CoolLogger.Error($"Null exception while creating new player. One of the components disabled may not exist");
             }
             return kiri2;
         }

@@ -2,21 +2,22 @@ using MultiSide.shared;
 using Photon.Client;
 using Photon.Realtime;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace MultiSide
 {
     public class PhotonCallbacks : IConnectionCallbacks, IMatchmakingCallbacks, IOnEventCallback, IInRoomCallbacks
     {
         public void OnConnected()
-            => ModController.CoolLogger.Msg("Connected to Photon server");
+            => Core.CoolLogger.Msg("Connected to Photon server");
 
         public void OnConnectedToMaster()
         {
-            ModController.CoolLogger.Msg("Connected to master server");
+            Core.CoolLogger.Msg("Connected to master server");
         }
 
         public void OnDisconnected(DisconnectCause cause)
-            => ModController.CoolLogger.Msg($"Disconnected from server: {cause}");
+            => Core.CoolLogger.Msg($"Disconnected from server: {cause}");
 
         public void OnJoinedRoom()
         {
@@ -27,21 +28,21 @@ namespace MultiSide
                 if (player.ActorNumber == PhotonManager.Instance.client.LocalPlayer.ActorNumber)
                     continue;
 
-                ModController.CoolLogger.Msg($"Spawning existing player {player.NickName} ({player.ActorNumber})");
+                Core.CoolLogger.Msg($"Spawning existing player {player.NickName} ({player.ActorNumber})");
 
                 GameObject kiriInstance = HelperFunctions.CreateKiri();
                 PhotonManager.Instance.playerObjects[player.ActorNumber] = kiriInstance;
             }
             ModListChecker.Init();
             NetworkRegistry.Provider?.Send(ModListChecker.Channel, HelperFunctions.GetModList());
-            ModController.CoolLogger.Msg("Joined room successfully");
+            Core.CoolLogger.Msg("Joined room successfully");
             PhotonManager.Instance.FireRoomJoined();
         }
 
         public void OnJoinRandomFailed(short returnCode, string message)
         {
-            ModController.CoolLogger.Msg($"Join random room failed: {returnCode} - {message}");
-            ModController.CoolLogger.Msg("No valid room found, creating default room");
+            Core.CoolLogger.Msg($"Join random room failed: {returnCode} - {message}");
+            Core.CoolLogger.Msg("No valid room found, creating default room");
 
             RoomOptions roomOptions = new RoomOptions
             {
@@ -78,14 +79,14 @@ namespace MultiSide
                     PhotonManager.Instance.RouteReceived(photonEvent.Sender, channel, payload);
                     break;
                 default:
-                    ModController.CoolLogger.Msg($"Unknown event code: {photonEvent.Code}");
+                    Core.CoolLogger.Msg($"Unknown event code: {photonEvent.Code}");
                     break;   
             }
         }
 
         public void OnPlayerEnteredRoom(Player newPlayer)
         {
-            ModController.CoolLogger.Msg($"Player entered room: {newPlayer.NickName} ({newPlayer.ActorNumber})");
+            Core.CoolLogger.Msg($"Player entered room: {newPlayer.NickName} ({newPlayer.ActorNumber})");
             GameObject kiriInstance = HelperFunctions.CreateKiri();
             PhotonManager.Instance.playerObjects[newPlayer.ActorNumber] = kiriInstance;
             PhotonManager.Instance.FirePlayerJoined(newPlayer.ActorNumber);
@@ -93,7 +94,7 @@ namespace MultiSide
 
         public void OnPlayerLeftRoom(Player otherPlayer)
         {
-            ModController.CoolLogger.Msg($"Player left room: {otherPlayer.NickName} ({otherPlayer.ActorNumber})");
+            Core.CoolLogger.Msg($"Player left room: {otherPlayer.NickName} ({otherPlayer.ActorNumber})");
             if (PhotonManager.Instance.playerObjects.TryGetValue(otherPlayer.ActorNumber, out GameObject? obj))
             {
                 GameObject.Destroy(obj);
@@ -103,7 +104,7 @@ namespace MultiSide
         }
 
         public void OnMasterClientSwitched(Player newMasterClient)
-            => ModController.CoolLogger.Msg($"Master client switched: {newMasterClient.NickName} ({newMasterClient.ActorNumber})");
+            => Core.CoolLogger.Msg($"Master client switched: {newMasterClient.NickName} ({newMasterClient.ActorNumber})");
 
         // The following callbacks are required but not used yet
         public void OnCreatedRoom() { }

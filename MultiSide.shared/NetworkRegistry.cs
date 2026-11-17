@@ -1,4 +1,6 @@
-﻿namespace MultiSide.shared
+﻿using System;
+
+namespace MultiSide.shared
 {
     public static class NetworkRegistry
     {

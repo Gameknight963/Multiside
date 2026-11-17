@@ -30,7 +30,7 @@ namespace MultiSide
 
         public void Init()
         {
-            ModController.CoolLogger.Msg("Initializing!");
+            Core.CoolLogger.Msg("Initializing!");
             client.ConnectUsingSettings(Config.settings);
             client.AddCallbackTarget(callbacks);
 
@@ -66,7 +66,7 @@ namespace MultiSide
             => playerObjects.TryGetValue(actor, out GameObject? obj) ? obj : null;
 
         public int LocalActorNumber => client.LocalPlayer.ActorNumber;
-        public GameObject? LocalPlayerObject => ModController.Kiri;
+        public GameObject? LocalPlayerObject => Core.Kiri;
 
         public bool IsInRoom => client?.InRoom ?? false;
         public event Action? OnRoomJoined;

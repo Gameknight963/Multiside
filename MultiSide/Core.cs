@@ -1,16 +1,17 @@
 ﻿using MelonLoader;
-using MultiSide;
 using UnityEngine;
-[assembly: MelonInfo(typeof(ModController), "Multiside", "1.0.2", "gameknight963")]
+
+[assembly: MelonInfo(typeof(MultiSide.Core), "Multiside", "2.0.0", "gameknight963")]
 
 namespace MultiSide
 {
-    public class ModController : MelonMod
+    public class Core : MelonMod
     {
         public static GameObject? Kiri { get; private set; }
         public static MelonLogger.Instance CoolLogger { get; private set; } = null!;
         private const float _updateInterval = 0.1f;
         // set the send timer to updateinterval so it sends right away
+        // (it increments up, not down)
         private float _sendTimer = _updateInterval;
 
         public override void OnInitializeMelon()

@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AssemblyName>Multiside</AssemblyName>
     <RootNamespace>Multiside</RootNamespace>
-	<ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>14.0</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,40 +14,37 @@
 
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\dependencies\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppInterop.Common">
-      <HintPath>..\dependencies\Il2CppInterop.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppInterop.Runtime">
-      <HintPath>..\dependencies\Il2CppInterop.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\dependencies\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>..\dependencies\unity\Assembly-CSharp.dll</HintPath>
+			<Private>false</Private>
     </Reference>
     <Reference Include="MelonLoader">
       <HintPath>..\dependencies\MelonLoader.dll</HintPath>
-    </Reference>
+			<Private>false</Private>
+		</Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\dependencies\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+			<Private>false</Private>
+		</Reference>
     <Reference Include="PhotonChat">
-      <HintPath>..\dependencies\PhotonChat.dll</HintPath>
-    </Reference>
+      <HintPath>..\dependencies\photon\PhotonChat.dll</HintPath>
+		</Reference>
     <Reference Include="PhotonClient">
-      <HintPath>..\dependencies\PhotonClient.dll</HintPath>
+      <HintPath>..\dependencies\photon\PhotonClient.dll</HintPath>
     </Reference>
     <Reference Include="PhotonRealtime">
-      <HintPath>..\dependencies\PhotonRealtime.dll</HintPath>
+      <HintPath>..\dependencies\photon\PhotonRealtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\dependencies\UnityEngine.dll</HintPath>
+      <HintPath>..\dependencies\unity\UnityEngine.dll</HintPath>
+			<Private>false</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\dependencies\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\dependencies\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\dependencies\unity\UnityEngine.CoreModule.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<HintPath>..\dependencies\unity\UnityEngine.PhysicsModule.dll</HintPath>
+			<Private>false</Private>
     </Reference>
   </ItemGroup>
 </Project>

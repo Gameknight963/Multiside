@@ -29,11 +29,11 @@ namespace MultiSide
 
             if (!theyHaveMissing.Any() && !iAmMissing.Any()) return;
 
-            ModController.CoolLogger.Warning($"Mod mismatch with player {actor}!");
+            Core.CoolLogger.Warning($"Mod mismatch with player {actor}!");
             if (iAmMissing.Any())
-                ModController.CoolLogger.Warning($"  You are missing: {string.Join(", ", iAmMissing)}");
+                Core.CoolLogger.Warning($"  You are missing: {string.Join(", ", iAmMissing)}");
             if (theyHaveMissing.Any())
-                ModController.CoolLogger.Warning($"  They are missing: {string.Join(", ", theyHaveMissing)}");
+                Core.CoolLogger.Warning($"  They are missing: {string.Join(", ", theyHaveMissing)}");
         }
     }
 }

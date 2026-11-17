@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
+		<LangVersion>14.0</LangVersion>
     <Nullable>enable</Nullable>
-	<ImplicitUsings>enable</ImplicitUsings>
 	<RootNamespace>Multiside.Shared</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
-      <HintPath>..\dependencies\UnityEngine.dll</HintPath>
+      <HintPath>..\dependencies\unity\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\dependencies\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\dependencies\unity\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
