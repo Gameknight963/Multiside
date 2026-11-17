@@ -11,7 +11,7 @@ A Melonloader mod to allow chaotic multiplayer gameplay in Miside Zero. Powered 
 
  - Select the game’s .exe file.
 
- - Install v0.7.2 or later or it will crash
+ - Press install.
 
 After installation, your game directory will contain:  
 ``Mods``  
@@ -29,11 +29,14 @@ Upon launching, you will automatically connect to the server.
 
 ## For mod developers
 
-Documentation can be found at [DOCUMENTATION.md](https://github.com/Gameknight963/Multiside/blob/main/DOCUMENTATION.md)
+Documentation on using the Multiside API can be found at [DOCUMENTATION.md](https://github.com/Gameknight963/Multiside/blob/main/DOCUMENTATION.md)
 
 ## Planned Features
+
+Check indicates completion.
+
 - ❌ UI  
-- ✅ Interpolation of movement, ~~or maybe buffering~~
+- ✅ Interpolation of movement
 - ❌ Synchronization of Mita's position  
 - ❌ Being able to tell Mita to follow you instead of someone else cause why not
 - ❌ Syncronized dialogue events
